@@ -31,10 +31,22 @@ def get_word_length_histogram(text: str) -> list[int]:
     return histogram
 
 
-def format_histogram(histogram):
-	ROW_CHAR = "*"
+def format_histogram(histogram: list[int]) -> str:
+    ROW_CHAR = "*"
 
-	return ""
+    max_pos = len(str(len(histogram) - 1))
+
+    # Remove row 0 to ignore it
+    # /!\ Don't forget to start indexes at 1!
+    histogram.pop(0)
+
+    return "\n".join(
+        [
+            f"{length:>{max_pos}} {ROW_CHAR * occurence}"
+            for length, occurence in enumerate(histogram, start=1)
+        ]
+    )
+
 
 def format_horizontal_histogram(histogram):
     BLOCK_CHAR = "|"

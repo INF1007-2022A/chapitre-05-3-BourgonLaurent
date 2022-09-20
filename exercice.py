@@ -3,8 +3,14 @@
 
 import math
 
-def get_num_letters(text):
-	return 0
+
+def get_num_letters(text: str) -> int:
+    letter_count = 0
+    for t in text:
+        if t.isalnum():
+            letter_count += 1
+
+    return letter_count
 
 def get_word_length_histogram(text):
 	return [0]
@@ -15,15 +21,15 @@ def format_histogram(histogram):
 	return ""
 
 def format_horizontal_histogram(histogram):
-	BLOCK_CHAR = "|"
-	LINE_CHAR = "¯"
+    BLOCK_CHAR = "|"
+    LINE_CHAR = "¯"
 
-	return ""
+    return ""
 
 
 if __name__ == "__main__":
-	spam = "Stop right there criminal scum! shouted the guard confidently."
-	eggs = get_word_length_histogram(spam)
-	print(eggs, "\n")
-	print(format_histogram(eggs), "\n")
-	print(format_horizontal_histogram(eggs))
+    spam = "Stop right there criminal scum! shouted the guard confidently."
+    eggs = get_word_length_histogram(spam)
+    print(eggs, "\n")
+    print(format_histogram(eggs), "\n")
+    print(format_horizontal_histogram(eggs))

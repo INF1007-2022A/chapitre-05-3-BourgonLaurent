@@ -48,11 +48,28 @@ def format_histogram(histogram: list[int]) -> str:
     )
 
 
-def format_horizontal_histogram(histogram):
+def format_horizontal_histogram(histogram: list[int]) -> str:
     BLOCK_CHAR = "|"
     LINE_CHAR = "¯"
+    histogram.pop(0)
 
-    return ""
+    width = len(histogram)
+    height = max(histogram) + 1
+
+    to_display = [[" " for _ in range(width)] for _ in range(height)]
+    for i, row in enumerate(reversed(to_display)):
+        if i == 0:
+            for row_index in range(len(row)):
+                row[row_index] = LINE_CHAR
+
+            row.append(LINE_CHAR)
+        else:
+            for row_index in range(len(row)):
+                if histogram[row_index] >= i:
+                    row[row_index] = BLOCK_CHAR
+            print(row)
+
+    return "\n".join(["".join(td) for td in to_display])
 
 
 if __name__ == "__main__":
